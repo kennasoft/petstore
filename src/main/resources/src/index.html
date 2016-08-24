@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html ng-app="PetStore">
+<head>
+<meta charset="UTF-8">
+<title ng-bind="pageTitle">
+Welcome to Super Duper Pet Store!
+</title>
+<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+ <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+ <![endif]-->
+<link rel='icon' href="favicon.png" />
+
+</head>
+
+<body ng-controller="PetStoreController as vm">
+ 
+<nav id="navigation">
+    <div class='logo'>
+        <div class="logo-img"></div>
+        <h1 class="logo-text">
+            Super Duper Pet Store
+        </h1>
+    </div>
+    <ul class="menu">
+        <li scroll-menu ng-repeat="mnu in vm.menus" class="menuItem regular">
+            <a ng-if="mnu.active" 
+               class="{{mnu.style}}" 
+               href="{{mnu.link}}"
+               ng-bind="mnu.label"></a>
+        </li>
+    </ul>
+</nav>
+  
+  <!-- WRAPPER STARTS HERE-->
+<div class='wrapper'>
+
+<main>
+    <section id="home" class="section-hero">
+        <div class="leading-text">Welcome to the most awesome pet store in the known Universe!</div>
+    </section>
+    <section id="find-pet" class="section-find">
+        <h3>Enter a pet ID to search for...</h3>
+        <div class="row">
+            <div class="col-xs-12">
+                <form class="search-form">
+                    <div class="input-group input-group-lg">
+                        <input placeholder="Enter Pet ID" class="form-control" type="number" ng-model="vm.petId"/>
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" ng-click="vm.getPet()">
+                                <i class="fa fa-search"></i> Get Pet
+                            </button>
+                        </span>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 pet-details">
+                <div class="col-xs-12 col-sm-6">
+                    <div data-pet-gallery data-images="vm.currentPet.photoUrls"></div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <table class="table table-success table-striped pet-attribs">
+                        <tr>
+                            <td class="txt-right">Name</td>
+                            <td>{{vm.currentPet.name}}</td>
+                        </tr>
+                        <tr>
+                            <td class="txt-right">Status</td>
+                            <td>{{vm.currentPet.status}}</td>
+                        </tr>
+                        <tr>
+                            <td class="txt-right">Category</td>
+                            <td>{{vm.currentPet.category.name}}</td>
+                        </tr>
+                        <tr>
+                            <td class="txt-right">Tags</td>
+                            <td>
+                                <span class="alert alert-info pet-tag"
+                                     ng-repeat='tag in vm.currentPet.tags'>
+                                    {{tag.name}}
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    <section id="about" class="section-about">
+        <div class="leading-text">
+            About Us...
+        </div>
+        <div class="white-shadow">
+            As you already know, we are the awesomest, straight up most reliable pet store in the known universe.
+            We may be famous beyond the known universe, but we may never know, cos if we know, then it becomes part of the known universe
+            and our fame is ... what are we saying? Just go ahead and experience it for yourselves
+        </div>
+        <p>
+            <small class="white-shadow">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+                At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+                At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+                At vero eos et accusam et justo duo dolores et ea rebum. 
+                Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            </small>
+        </p>
+    </section>
+    <section id="drop-pet" class="section-drop">
+        Enter the information of the pet you want to drop off
+        <div class="pet-details text-left">
+            <form>
+                <div class="form-group row">
+                    <label for="pet-name" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" 
+                             class="form-control form-control-lg" 
+                             ng-model="vm.newPet.name"
+                             required="true"
+                             id="pet-name" 
+                             placeholder="Enter pet name (required)..."/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="pet-category" class="col-sm-2 col-form-label">Category</label>
+                    <div class="col-sm-10">
+                        <select class="form-control form-control-lg" 
+                                id="pet-category"
+                                ng-model="vm.newPet.category"
+                                ng-options="category for category in vm.categories">
+                            <option value="">Select a category</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="pet-status" class="col-sm-2 col-form-label">Status</label>
+                    <div class="col-sm-10">
+                        <select class="form-control form-control-lg" 
+                                id="pet-status"
+                                required="true"
+                                ng-model="vm.newPet.status"
+                                ng-options="status for status in ['available','unavailable']">
+                            <option value="">Select status (required)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="pet-tag" class="col-sm-2 col-form-label">Tags</label>
+                    <div class="col-sm-10">
+                        <div class="input-group">
+                            <input type="text" 
+                                 class="form-control" 
+                                 ng-model="vm.tagName"
+                                 ng-keypress="$event.which===13 && vm.addTag()"
+                                 id="pet-tag" 
+                                 placeholder="Add tags here"/>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary"
+                                        ng-click="vm.addTag()">Add</button>
+                            </span>
+                        </div>
+                        <div class="pet-tag-wrapper" ng-show="vm.newPet.tags.length>0">
+                            <span class="alert pet-tag alert-info"
+                                  ng-repeat="tag in vm.newPet.tags">
+                                {{tag.name}}
+                                <i class="fa fa-times tag-close-btn" ng-click="vm.removeTag($index)"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="pet-photos" class="col-sm-2 col-form-label">Photo</label>
+                    <div class="col-sm-10">
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <input class="form-control form-control-lg" 
+                                        id="pet-photos"
+                                        ng-model="vm.newPet.photoUrls[0]"
+                                        required="true"
+                                        placeholder="Paste image url here (at least one image required)"/>
+                                    <span class="input-group-btn">
+                                        <button type="button" title="Click to add more photos" class="btn btn-success" ng-click="vm.addPhotoInput()">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row" ng-repeat="url in vm.newPet.photoUrls track by $index" ng-if="$index > 0">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <input class="form-control form-control-lg"
+                                        ng-model="vm.newPet.photoUrls[$index]"
+                                        placeholder="Paste additional image url here"/>
+                                    <span class="input-group-btn">
+                                        <button type="button" title="Click to remove" class="btn btn-danger" ng-click="vm.removePhotoInput($index)">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-offset-2 col-sm-8">
+                        <div ng-show="vm.petSaved" class="alert alert-success">
+                            <i class="fa fa-check-circle"></i>
+                            Thanks for dropping off your pet.
+                            We shall find a new home for him/her ASAP!
+                        </div>
+                        <div ng-show="vm.saveError" class="alert alert-danger">
+                            <i class="fa fa-times-circle"></i>
+                            There was an error saving pet details!
+                        </div>                        
+                        <div ng-show="vm.formError" class="alert alert-danger">
+                            <i class="fa fa-times-circle"></i>
+                            Please ensure all required fields are filled!
+                        </div>
+                    </div>
+                    <div class="col-sm-2 text-right">
+                        <button class="btn btn-success btn-lg" ng-click="vm.savePet()">
+                            <i class="fa fa-paw"></i>
+                             SUBMIT
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section id="mission" class="section-mission">
+        <div class="leading-text">
+            It is our life ambition to spread cuteness to all parts of the planet!
+        </div>
+        <small class="white-shadow">Now, how's that for a mission statement?</small>
+    </section>
+</main>
+	
+<!-- FOOTER STARTS HERE-->
+<section class="section-testimonial " id='testimonial'>
+    <div class="container">
+         <div class="row">
+            <div class="col-lg-12">
+                <div class="yomer-text-center">
+                    <h2>What our clients say</h2>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                </div>
+                <div class="gap"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <blockquote>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                        </blockquote>
+                        <blockquote>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                        </blockquote>
+                    </div>
+                    <div class="col-md-6">
+                        <blockquote>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                        </blockquote>
+                        <blockquote>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--/ FOOTER ENDS HERE-->
+
+</div>
+
+<!-- build:js /js/lib/dependencies.js -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src='bower_components/bootstrap/dist/js/bootstrap.min.js'></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<!-- endbuild -->
+
+<!-- build:js /js/site.js -->
+<script src="js/app/config/globals.js"></script>
+<script src="js/app/services/services.js"></script>
+<script src="js/app/app.js"></script>
+<script src="js/app/controllers/petstore-ctrl.js"></script>
+<script src="js/app/directives/scroll-menu.js"></script>
+<script src="js/app/directives/pet-gallery.js"></script>
+<!-- endbuild -->
+</body>
+</html>

@@ -1,0 +1,59 @@
+[
+    {
+        "name": "FuzzyCat",
+        "photoUrls": [
+            "http://loremflickr.com/g/320/240/cat",
+            "http://loremflickr.com/320/240/cat"
+        ],
+        "tags": [
+            {"name": "cat"},
+            {"name": "feline"}
+        ],
+        "status": "available",
+        "category": { "name": "cat" }
+    },
+    {
+        "name": "NaughtyDog",
+        "photoUrls": [
+            "http://loremflickr.com/g/320/240/dog",
+            "http://loremflickr.com/320/240/dog"
+        ],
+        "tags": [
+            {"name": "dog"},
+            {"name": "k9"}
+        ],
+        "status": "available",
+        "category": { "name": "dog" }
+    },
+    {
+        "name": "Spotty",
+        "photoUrls": [
+            "http://loremflickr.com/g/320/240/leopard",
+            "http://loremflickr.com/320/240/leopard"
+        ],
+        "tags": [
+            {"name": "feline"},
+            {"name": "leopard"},
+            {"name": "wildcat"}
+        ],
+        "status": "available",
+        "category": { "name": "cat" }
+    },
+    {
+        "name": "King Kong",
+        "photoUrls": [
+            "http://www.sciencedump.com/sites/default/files/field/teaserimage/gorilla.jpg",
+            "http://www.kidzone.ws/ANIMALS/gorillas/gorilla.jpg",
+            "http://i.dailymail.co.uk/i/pix/2014/04/14/article-2604010-1D117C4D00000578-291_634x782.jpg",
+            "http://i4.mirror.co.uk/incoming/article8084087.ece/ALTERNATES/s615/MAIN-Dublin-zoo-gorilla-dies-after-short-illness.jpg"
+        ],
+        "tags": [
+            {"name": "ape"},
+            {"name": "gorilla"},
+            {"name": "primate"}
+        ],
+        "status": "available",
+        "category": { "name": "primate" }
+    }
+    
+]

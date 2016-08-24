@@ -1,0 +1,28 @@
+{
+  "name": "petshop",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Ikenna Okonkwo <ikenna.okonkwo@gmail.com>",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^2.2.1",
+    "gulp": "^3.9.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-run-sequence": "^0.3.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-useref": "^3.1.0",
+    "gulp-util": "^3.0.7",
+    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.4.1",
+    "karma": "^1.2.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "run-sequence": "^1.2.2"
+  }
+}
