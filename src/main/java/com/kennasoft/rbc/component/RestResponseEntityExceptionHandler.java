@@ -2,6 +2,7 @@ package com.kennasoft.rbc.component;
 
 import java.util.HashMap;
 import java.util.Map;
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -39,6 +40,16 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         obj.put("message", "java.lang.NumberFormatException: For input string: \\\"x\\\"");
         //trying to match the response in the swagger example
         return new ResponseEntity<>(obj,HttpStatus.BAD_REQUEST);
+    }
+    
+    @ExceptionHandler(value = {EntityExistsException.class})
+    protected ResponseEntity<Object> handleEntityExists(RuntimeException ex, WebRequest request){
+        Map<String, Object> obj = new HashMap<>();
+        obj.put("code", 409);
+        obj.put("type", "unknown");
+        obj.put("message", "Pet already exists in store");
+        //trying to match the response in the swagger example
+        return new ResponseEntity<>(obj,HttpStatus.CONFLICT);
     }
     
     @ExceptionHandler(value = {EntityNotFoundException.class})

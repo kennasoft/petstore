@@ -1,3 +1,3 @@
 var AppGlobals = {
-    apiUrl: 'http://localhost:8080/' //base url for all API calls
+    apiUrl: location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '') +'/' //base url for all API calls
 };

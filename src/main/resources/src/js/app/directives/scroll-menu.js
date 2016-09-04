@@ -13,11 +13,17 @@
             restrict: 'AC',
             scope: {},
             link: function(scope, element, attr){
+                scope.$on('navigateToSection', function(event, sectionId){
+                    if(sectionId.indexOf('#')!=0) {
+                        sectionId = '#'+sectionId;
+                    }
+                    $("body").scrollTo(sectionId, 600);
+                });
                 element.click(function(event){
                     event.preventDefault();
                     event.stopImmediatePropagation();
                     var target = $(this).find('a').attr('href');
-                    jQuery("body").scrollTo(target, 600);
+                    $("body").scrollTo(target, 600);
                 });
             }
         };

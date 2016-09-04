@@ -1,8 +1,11 @@
 package com.kennasoft.rbc.controller;
 
+import com.kennasoft.rbc.model.Category;
 import com.kennasoft.rbc.model.Pet;
+import com.kennasoft.rbc.service.CategoryService;
 import com.kennasoft.rbc.service.PetService;
 import java.util.Collection;
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,7 +49,7 @@ public class PetController {
     @CrossOrigin(origins = "*")
     public ResponseEntity<Collection<Pet>> getAllPets(){
         Collection<Pet> pet = petService.findAll();
-        return new ResponseEntity<>(pet,HttpStatus.OK);
+        return new ResponseEntity<>(pet, HttpStatus.OK);
     }
     
     
@@ -56,17 +59,45 @@ public class PetController {
     @CrossOrigin(origins = "*")
     public ResponseEntity<Pet> createPet(@RequestBody Pet pet){
         pet = petService.create(pet);
+        if(pet==null){
+            throw new EntityExistsException();
+        }
+        return new ResponseEntity<>(pet,HttpStatus.OK);
+    }
+    
+    
+    @RequestMapping(value="/pet",
+                    method = RequestMethod.PUT,
+                    consumes = MediaType.APPLICATION_JSON_VALUE)
+    @CrossOrigin(origins = "*")
+    public ResponseEntity<Pet> updatePet(@RequestBody Pet pet){
+        pet = petService.update(pet);
+        if(pet==null){
+            throw new EntityNotFoundException();
+        }
         return new ResponseEntity<>(pet,HttpStatus.OK);
     }
     
     
     @RequestMapping(value="/pet/{id}",
-                    method = RequestMethod.DELETE,
-                    consumes = MediaType.APPLICATION_JSON_VALUE)
+                    method = RequestMethod.DELETE
+                    )
     @CrossOrigin(origins = "*")
     public ResponseEntity<Pet> deletePet(@PathVariable Long id){
         boolean deleted = petService.delete(id);
         return new ResponseEntity<>(deleted ? HttpStatus.NO_CONTENT : HttpStatus.NOT_FOUND);
+    }
+    
+    @Autowired
+    CategoryService categoryService;
+
+    @RequestMapping(value="/categories",
+                    method = RequestMethod.GET,
+                    produces = MediaType.APPLICATION_JSON_VALUE)
+    @CrossOrigin(origins="*")
+    public ResponseEntity<Collection<Category>> getAllCategories(){
+        Collection<Category> categories = categoryService.findAll();
+        return new ResponseEntity<>(categories, HttpStatus.OK);
     }
     
 }

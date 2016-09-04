@@ -5,7 +5,8 @@
     angular.module('PetStore.directives',[]);
 
     var main = angular.module('PetStore',
-        ['ngResource', 'PetStore.controllers', 'PetStore.services','PetStore.directives']);
+        ['ngResource', 'PetStore.controllers', 'PetStore.services',
+            'PetStore.directives','PetStore.filters']);
 
     main.constant("Globals", AppGlobals);
 

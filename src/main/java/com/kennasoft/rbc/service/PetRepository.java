@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
- * @author ikennakonga
+ * @author Ikenna Okonkwo
  */
 public interface PetRepository extends JpaRepository<Pet, Long>{
     

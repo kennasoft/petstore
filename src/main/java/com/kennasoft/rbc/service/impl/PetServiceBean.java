@@ -1,18 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.kennasoft.rbc.service;
+package com.kennasoft.rbc.service.impl;
 
 import com.kennasoft.rbc.model.Pet;
+import com.kennasoft.rbc.service.PetRepository;
+import com.kennasoft.rbc.service.PetService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
  *
- * @author ikennakonga
+ * @author Ikenna Okonkwo
  */
 
 @Service
@@ -42,7 +39,7 @@ public class PetServiceBean implements PetService {
     @Override
     public Pet update(Pet pet) {
         if(pet.getId()!=null && petRepo.exists(pet.getId())){
-            
+            return petRepo.save(pet);
         }
         return null;
     }

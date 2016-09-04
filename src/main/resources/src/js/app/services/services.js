@@ -9,17 +9,16 @@
     services.factory('PetService', ['$resource', function ($resource) {
         return $resource(AppGlobals.apiUrl + 'pet/:id', {}, 
         {
-            get: {
-                method: 'GET',
-                headers: {
-                    'Authorization': 'Bearer ' + 'dXNlcjo2MDEwMWE1OS0xYTdiLTQ3NjktYWQ1ZS1iZWE3MzVhMTVlZmM='
-                }, 
-                cache: true, 
-                isArray: false
-            },
+            get: {method: 'GET', cache: false, isArray: false},
             query: {method: 'GET', cache: true, isArray: false},
-            update: {method: 'PUT'},
-            incrementHits: {method: 'PUT'}
+            update: {method: 'PUT'}
+        });
+    }]);
+
+    services.factory('CategoryService', ['$resource', function($resource){
+        return $resource(AppGlobals.apiUrl + 'categories', {}, 
+        {
+            query: { method: 'GET', cache: true, isArray: true}
         });
     }]);
 

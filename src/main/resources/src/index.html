@@ -89,6 +89,21 @@ Welcome to Super Duper Pet Store!
                             </td>
                         </tr>
                     </table>
+                    <fieldset>
+                        <legend>Operations</legend>
+                        <div>
+                            <button class="btn btn-warning btn-lg"
+                                    ng-click="vm.editPet()">
+                                <i class="fa fa-cloud-upload"></i> Modify & Update
+                            </button>
+                            
+                            <button class="btn btn-danger btn-lg"
+                                    data-confirm-click="vm.deletePet(vm.currentPet.id)"
+                                    data-confirm-click-message="Are you sure you want to delete this pet?">
+                                <i class="fa fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </fieldset>
                 </div>
             </div>
         </div>
@@ -136,7 +151,7 @@ Welcome to Super Duper Pet Store!
                         <select class="form-control form-control-lg" 
                                 id="pet-category"
                                 ng-model="vm.newPet.category"
-                                ng-options="category for category in vm.categories">
+                                ng-options="category.name for category in vm.categories | unique : 'name' track by category.id">
                             <option value="">Select a category</option>
                         </select>
                     </div>
@@ -229,7 +244,7 @@ Welcome to Super Duper Pet Store!
                         </div>
                     </div>
                     <div class="col-sm-2 text-right">
-                        <button class="btn btn-success btn-lg" ng-click="vm.savePet()">
+                        <button type="button" class="btn btn-success btn-lg" ng-click="vm.savePet()">
                             <i class="fa fa-paw"></i>
                              SUBMIT
                         </button>
@@ -298,10 +313,12 @@ Welcome to Super Duper Pet Store!
 <!-- build:js /js/site.js -->
 <script src="js/app/config/globals.js"></script>
 <script src="js/app/services/services.js"></script>
+<script src="js/app/filters/filters.js"></script>
 <script src="js/app/app.js"></script>
 <script src="js/app/controllers/petstore-ctrl.js"></script>
 <script src="js/app/directives/scroll-menu.js"></script>
 <script src="js/app/directives/pet-gallery.js"></script>
+<script src="js/app/directives/confirm-click.js"></script>
 <!-- endbuild -->
 </body>
 </html>

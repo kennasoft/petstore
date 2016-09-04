@@ -7,9 +7,9 @@ package com.kennasoft.rbc.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,13 +26,12 @@ public class Tag implements Serializable {
     
     private String name;
     
-    private Set<Pet> pets;
+    private Set<Pet> pets = new HashSet<>();
 
     public Tag() {
     }
 
-    public Tag(Long id, String name) {
-        this.id = id;
+    public Tag(String name) {
         this.name = name;
     }
 

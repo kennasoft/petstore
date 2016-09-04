@@ -54,6 +54,21 @@
         ],
         "status": "available",
         "category": { "name": "primate" }
+    },
+    {
+        "name": "Tyrannosaurus Rex",
+        "photoUrls": [
+            "http://vignette2.wikia.nocookie.net/jurassicpark/images/5/57/Jurassic-world-stomp-strike-tyrannosaurus-rex-1.jpg/revision/latest?cb=20150213174835",
+            "http://orig03.deviantart.net/f652/f/2014/331/5/7/jurassic_world__tyrannosaurus_rex_by_sonichedgehog2-d87wp3n.png",
+            "http://www.abc.net.au/news/image/7251586-3x2-940x627.jpg",
+            "http://www.sideshowtoy.com/assets/products/200209-t-rex-the-tyrant-king/lg/200209-t-rex-the-tyrant-king-003.jpg"
+        ],
+        "tags": [
+            {"name": "T-Rex"},
+            {"name": "Dinosaur"},
+            {"name": "Jurassic"}
+        ],
+        "status": "available",
+        "category": { "name": "dinosaur" }
     }
-    
 ]
