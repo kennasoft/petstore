@@ -66,6 +66,10 @@ public class Category implements Serializable{
         this.pets = pets;
     }
     
+    public void addPet(Pet pet){
+        this.pets.add(pet);
+    }
+    
     
     
 }

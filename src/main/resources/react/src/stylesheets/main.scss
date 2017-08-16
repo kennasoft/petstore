@@ -1,0 +1,14 @@
+@import 'abstracts/colors';
+@import 'base/all';
+@import 'layout/all';
+@import 'components/all';
+
+.leading-text {
+    font-size: 3em;
+    width: 70%;
+    margin: auto;
+    color: #EEE;
+    text-shadow: 2px 2px 4px #333;
+}
+
+
