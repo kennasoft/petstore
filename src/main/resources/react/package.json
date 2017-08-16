@@ -1,0 +1,34 @@
+{
+  "name": "petstore",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.16.2",
+    "jquery": "^3.2.1",
+    "jquery-scrollto": "^1.4.6",
+    "node-sass-chokidar": "^0.0.3",
+    "npm-run-all": "^4.0.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.2",
+    "react-router-redux": "next",
+    "redux": "^3.7.2",
+    "redux-promise-middleware": "^4.3.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "homepage": "http://localhost:8080/react",
+  "devDependencies": {
+    "react-scripts": "1.0.10",
+    "redux-logger": "^3.0.6"
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar src/stylesheets -o src/css/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/stylesheets -o src/css/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

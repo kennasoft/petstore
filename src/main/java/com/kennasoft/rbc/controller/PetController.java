@@ -29,7 +29,7 @@ public class PetController {
     @Autowired
     PetService petService;
     
-    @RequestMapping(value="/pet/{id}",
+    @RequestMapping(value="/api/pet/{id}",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE
                     )
@@ -42,7 +42,7 @@ public class PetController {
         return new ResponseEntity<>(pet,HttpStatus.OK);
     }
     
-    @RequestMapping(value="/pet",
+    @RequestMapping(value="/api/pet",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE
                     )
@@ -53,7 +53,7 @@ public class PetController {
     }
     
     
-    @RequestMapping(value="/pet",
+    @RequestMapping(value="/api/pet",
                     method = RequestMethod.POST,
                     consumes = MediaType.APPLICATION_JSON_VALUE)
     @CrossOrigin(origins = "*")
@@ -66,7 +66,7 @@ public class PetController {
     }
     
     
-    @RequestMapping(value="/pet",
+    @RequestMapping(value="/api/pet",
                     method = RequestMethod.PUT,
                     consumes = MediaType.APPLICATION_JSON_VALUE)
     @CrossOrigin(origins = "*")
@@ -79,7 +79,7 @@ public class PetController {
     }
     
     
-    @RequestMapping(value="/pet/{id}",
+    @RequestMapping(value="/api/pet/{id}",
                     method = RequestMethod.DELETE
                     )
     @CrossOrigin(origins = "*")
@@ -91,7 +91,7 @@ public class PetController {
     @Autowired
     CategoryService categoryService;
 
-    @RequestMapping(value="/categories",
+    @RequestMapping(value="/api/categories",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
     @CrossOrigin(origins="*")

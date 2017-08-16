@@ -1,0 +1,196 @@
+body {
+    font-size: 16px;
+    color: #555;
+}
+
+#navigation {
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    width: 100%; 
+    box-shadow: 0 5px 5px 5px #333;
+}
+
+.logo {
+    padding-left: 120px;
+    padding-bottom: 15px;
+    display: inline-block;
+}
+
+.logo-img {
+    background: url("../img/pet-store-icon.png") no-repeat;
+    background-size:  100px;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    z-index: 99999;
+}
+
+.logo-text {
+    color: #FFF;
+}
+
+ul.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    float: right;
+    margin: 25px 20px;
+}
+
+li.menuItem {
+    display: inline-block;
+    color: #EEE;
+    padding: 0 10px;
+}
+
+li.menuItem a {
+    color: #EEE;
+    text-decoration: none;
+}
+
+section {
+    width: 100%;
+    min-height: 250px;
+    background-attachment: fixed;
+    color: #333;
+    padding: 100px 50px;
+    text-align: center;
+    font-size: 2em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.section-hero {
+    background-image: url("../img/stock-photo-three-akita-inu-puppy-dogs-on-green-grass-77012650.jpg");
+    font-weight: bold;
+    margin-top: 84px;
+}
+
+.section-about {
+    background-image: url("../img/help-dog-picture.jpg") ;
+    position: relative;
+}
+
+.section-mission {
+    background-image: url("../img/Cute_Pet_Dog_Wallpaper.jpg"); 
+}
+
+.section-testimonial {
+    background-color: #333;
+    color: #DDD;
+}
+
+.leading-text {
+    font-size: 3em;
+    width: 70%;
+    margin: auto;
+    color: #EEE;
+    text-shadow: 2px 2px 4px #333;
+}
+
+.white-shadow {
+    text-shadow: 2px 2px 4px #EEE;
+}
+
+.search-form {
+    width: 80%;
+    margin: auto;
+}
+
+.search-box {
+    text-align: right;
+    min-width: 70%;
+}
+
+
+div.thumbnails {
+    text-align: center;
+    overflow: hidden;
+    overflow-x: auto;
+    height: 70px;
+    margin-bottom: 15px;
+}
+
+ul.thumbnails-list {
+    list-style: none;
+    padding: 0 0 0 10px;
+    display: inline-block;
+    margin: 0;
+}
+
+li.thumbnail {
+    border: solid 2px #eee;
+    cursor: pointer;
+    display: table;
+    float: left;
+    margin: 0 2px 2px 0;
+    padding: 0;
+    width: 64px;
+    height: 64px;
+}
+
+li.thumbnail div {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+li.thumbnail img {
+    max-width: 64px;
+    max-height: 64px;
+    vertical-align: middle;
+}
+
+.main-pet-img {
+    width: 100%;
+    height: 300px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url("../img/pet-store-icon.png");
+}
+
+.pet-attribs {
+    font-size: 18px;
+    text-align: left;
+}
+
+.pet-tag {
+    padding: 7px;
+    margin: 3px;
+    font-size: 2rem;
+}
+
+.tag-close-btn {
+    cursor: pointer;
+}
+
+.pet-tag-wrapper {
+    margin: 0;
+    padding: 15px;
+    border: 1px solid #CCC;
+    border-top: none;
+    border-radius: 4px;
+}
+
+.pet-details {
+    padding: 15px;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    margin: 15px;
+}
+
+.grayscale {
+    -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+    -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+    -webkit-filter: grayscale(100%);
+    filter: gray;
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+}

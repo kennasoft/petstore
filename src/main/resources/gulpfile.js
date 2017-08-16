@@ -5,11 +5,13 @@
 // grab our gulp packages
 var gulp        = require('gulp'),
 //    gutil       = require('gulp-util'),
-    sass        = require('gulp-sass'),
+//    sass        = require('gulp-sass'),
     Del         = require('del'),
     Rename      = require('gulp-rename'),
     RunSequence = require('run-sequence'),
-    Useref      = require('gulp-useref');
+    Useref      = require('gulp-useref'),
+    path          = require('path'),
+    spawn       = require('child_process').spawn;
     
 /**
  * Build Settings
@@ -18,18 +20,28 @@ var settings = {
   /*
    * Where is our code?
    */
-  srcFolder    : './src',
-
+  srcFolder    : './angular/src',
+  
   /*
    * Where are we building to?
    */
-  buildFolder  : './build',
+  buildFolder  : './angular/build',
 
   /*
    * Where should the final file be?
    */
-  destFolder   : './static'
+  destFolder   : './static/angular',
 
+  /*
+   * Other project's code
+   */
+  reactFolder  : './react',
+
+  /*
+   * Other project's code
+   */
+  reactDest  : './static/react'
+  
 };
 
 /*
@@ -82,9 +94,20 @@ gulp.task('src', ['clean'], function() {
  * places them in our dest folder.
  */
 gulp.task('dest', ['src'], function() {
-    console.log('Sources: '+settings.buildFolder + '/**/*' + ', ' + settings.srcFolder + '/css/*.*');
-  return gulp.src([settings.buildFolder + '/**/*', settings.srcFolder + '/css/*.*'])
+//    const normalizedPath = path.normalize(__dirname + settings.destFolder);
+    return gulp.src([settings.buildFolder + '/**/*', settings.srcFolder + '/css/*.*'])
              .pipe(gulp.dest(settings.destFolder));
+});
+
+gulp.task('build-react', function(){
+    const normalizedPath = path.normalize(__dirname + '/' + settings.reactFolder);
+    console.log(`normalizedPath: ${normalizedPath}`);
+    const cmd = spawn('npm', ['run', 'build'], {stdio: 'inherit', cwd: normalizedPath});
+    cmd.on('close', function(code){
+        console.log(`react build task exited with code: ${code}.\ncopying to ${settings.reactDest}...`);
+        return gulp.src(settings.reactFolder+'/build/**/*')
+                .pipe(gulp.dest(settings.reactDest));
+    });
 });
 
 /**
@@ -111,15 +134,15 @@ gulp.task('bower_js', ['src'], function(){
  * Build our transpiled/compiled and config
  * files in to one awesome file.
  */
-gulp.task('process-sass', ['src'], function() {
-  return gulp.src(settings.srcFolder + '/sass/main.scss')
-             .pipe(sass({
-                sourceComments: true,
-                outputStyle: 'expanded',
-                errLogToConsole: true
-             }).on('error', sass.logError))
-             .pipe(settings.srcFolder+'/css');
-});
+//gulp.task('process-sass', ['src'], function() {
+//  return gulp.src(settings.srcFolder + '/sass/main.scss')
+//             .pipe(sass({
+//                sourceComments: true,
+//                outputStyle: 'expanded',
+//                errLogToConsole: true
+//             }).on('error', sass.logError))
+//             .pipe(settings.srcFolder+'/css');
+//});
 
 /**
  * Build Task
@@ -129,7 +152,6 @@ gulp.task('process-sass', ['src'], function() {
  */
 gulp.task('build', function() {
   return gulp.src(settings.buildFolder + '/app.js')
-             .pipe()
              .pipe(settings.destFolder);
 });
 
@@ -138,7 +160,7 @@ gulp.task('build', function() {
  *
  * Run the tasks in the correct order
  */
-gulp.task('default', ['dest'], function() {
+gulp.task('default', ['dest','build-react'], function() {
      
 //  return RunSequence([
 //    'clean',

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Super Duper Pet Store</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/angular/favicon.png">
+        <style type="text/css">
+            body {
+                padding: 10px 15%;
+                font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            }
+            h1.welcome {
+                text-align: center;
+            }
+            div{
+                width: 100%;
+                height: 50%;
+                text-align: center;
+            }
+            a.client{
+                display: inline-block;
+                width: 38%;
+                height: 300px;
+                margin: 5%;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                cursor: pointer;
+            }
+            a.angular {
+                background-image: url("https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg");
+            }
+            a.react {
+                background-image: url("https://facebook.github.io/react/img/logo.svg");
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <img src="angular/img/pet-store-icon.png" width="300" alt="pet-store-logo" />
+            <h1 class="welcome">
+                Welcome to Super Duper Pet Store!
+                <br/><small>Please choose a client below</small>
+            </h1>
+            <div>
+                <a class="client react" href="react/"></a>
+                <a class="client angular" href="angular/"></a>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+#navigation {
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    width: 100%; 
+    box-shadow: 0 5px 5px 5px #333;
+}
+
+.logo {
+    padding-left: 120px;
+    padding-bottom: 15px;
+    display: inline-block;
+}
+
+.logo-img {
+    background: url("../img/pet-store-icon.png") no-repeat;
+    background-size:  100px;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    z-index: 99999;
+}
+
+.logo-text {
+    color: #FFF;
+}
+
+ul.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    float: right;
+    margin: 25px 20px;
+}
+
+li.menuItem {
+    display: inline-block;
+    color: #EEE;
+    padding: 0 10px;
+    a {
+        color: #EEE;
+        text-decoration: none;
+    }
+}
